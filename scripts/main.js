@@ -1,15 +1,7 @@
+var a=document.querySelector('h1');
+a.textContent = 'Hello world!';
 
-var myImage = document.querySelector('img');
-var myButton = document.querySelector('button');
-var myHeading =document.querySelector('h1');
-
-
-if(!localStorage.getItem('name')){
-    setUserName();
-}else{
-    let storedName=localStorage.getItem('name');
-    myHeading.innerHTML=' Hi '+storedName;
-}
+var myImage =document.querySelector('img')
 
 myImage.onclick=function(){
     let mySrc =myImage.getAttribute('src');
@@ -20,19 +12,3 @@ myImage.onclick=function(){
         myImage.setAttribute('src','images/陳BO全.jpg');
     }
 }
-
-function setUserName(){
-    let myName =prompt('Please enter your name.');
-    if(!myName||myName===null){
-    setUserName();
-    }
-    else{
-    localStorage.setItem('name',myName);
-    myHeading.innerHTML=' Hi '+myName;
-    }
-}
-
-myButton.onclick=function(){
-    setUserName();
-}
-//alert('hello');
