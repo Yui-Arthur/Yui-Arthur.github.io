@@ -2,33 +2,43 @@
 <html lang="zh-Hant-TW">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
         <title>練習</title>
+        
     </head>
     <body>
+    <main class="form-signin">
+        <div class="container">
+            
+            <form>
+                <div class="position-absolute top-50 start-50 translate-middle">
+                    
+                        <div class="mb -3">
+                            <div class="p-3 mb-2 bg-primary text-white">
+                            <label for="exampleInputEmail1" class="form-label">NUK email</label>
+                            </div>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"placeholder="A1105587@mail.nuk.edu.tw" aria-label=".form-control-sm example">
+                            
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                    
+                </div>
+            </form>
         
-        <h1>宿營</h1>
-        <div id="a"></div>
-        <a href="first.html">first</a>
-        <a href="https://www.nuk.edu.tw/" title="高大" > <img src="images/貓咪.jpg"> </a>        
-        <img src="images/陳柏全死歌.jpg">
-        <img src="images/陳柏全貓.jpg">
-        <a href="#a">跳轉</a>
-        <dl>
-            <dt>第一天活動</dt>
-            <dd>大地遊戲</dd>
-            <dd>誰是臥底</dd>
-            <dt>第二天活動</dt>
-            <dd>夜教</dd>
-        </dl>
-
-        <address>
-            <p>Chris Mills, Manchester, The Grim North, UK</p>
-        </address>
-        <footer>
-            <p>©Copyright 2050 by nobody. All rights reversed.</p>
-        </footer>
+        </div>
+    </main>
         <script src= "scripts/main.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     </body>
 </html>
