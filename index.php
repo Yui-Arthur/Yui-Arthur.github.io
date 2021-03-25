@@ -1,61 +1,59 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.79.0">
-    <title>Signin Template · Bootstrap v5.0</title>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.79.0">
+  <title>Signin Template · Bootstrap v5.0</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
-    
+  
 
-    <!-- Bootstrap core CSS -->
+  <!-- Bootstrap core CSS -->
 <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
-    </style>
+    }
+  </style>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
-    
-<main class="form-signin">
-  <div style="border-color:#86868b;border-style:solid;border-width:2px 2px;padding-left: 10px;padding-right:10px;padding-top: 30px;">
-  <form action="index.php" method="POST">
-    <img class="mb-4" src="image/na-team_logo.png" alt="" width="150" height="150">
-    <h1 class="h3 mb-3 fw-normal">宿營登入</h1>
-    <label for="inputEmail" class="visually-hidden">Email address</label>
-    <input type="text" name="username" id="input" class="form-control" placeholder="" required >
-    <label for="inputPassword" class="visually-hidden">Password</label>
-    <input type="password" name="pw" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">登入</button>
-    <p class="mt-5 mb-3 text-muted">&copy; 2021-NUK-CSIE-CAMPING</p>
-  </form>
-	
-	<?php
+  
+  <!-- Custom styles for this template -->
+  <link href="signin.css" rel="stylesheet">
+</head>
+<body class="text-center" background="image/background.jpg">
+  
+<main class="form-signin" >
+<div style="border-color:#86868b;border-style:solid;border-width:2px 2px;padding-left: 10px;padding-right:10px;padding-top: 30px;background-color: white;">
+<form action="index.html" method="POST"  >
+  <img class="mb-4" src="image/na-team_logo.png" alt="" width="150" height="150"> 
+  <h1 class="h3 mb-3 fw-normal">宿營登入</h1>
+  
+  <input type="text" id="input" class="form-control" placeholder="Account" required="">
+ 
+  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+  <div class="checkbox mb-3">
+    <label>
+      <input type="checkbox" value="remember-me"> Remember me
+    </label>
+  </div>
+  <button class="w-100 btn btn-lg btn-primary" type="submit" style="background-color:#EEFFBB;color: black;">登入</button>
+  <p class="mt-5 mb-3 text-muted">© 2021-NUK-CSIE-CAMPING</p>
+</form>
+</div>
+<?php
 	session_start();
 	if(isset($_POST['pw']))
 	{
@@ -94,11 +92,10 @@
 		
 	
 	?>
-</div>
 </main>
-	
-	
 
-    
-  </body>
-</html>
+
+  
+
+
+</body></html>
