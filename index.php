@@ -38,7 +38,7 @@
   <body class="text-center">
     
 <main class="form-signin">
-  <div style="border-color:#86868b;border-style:solid;border-width:2px 2px;padding-left: 10px;padding-right: 10px;">
+  <div style="border-color:#86868b;border-style:solid;border-width:2px 2px;padding-left: 10px;padding-top: 50px;">
   <form action="index.php" method="POST">
     <img class="mb-4" src="image/na-team_logo.png" alt="" width="150" height="150">
     <h1 class="h3 mb-3 fw-normal">宿營登入</h1>
