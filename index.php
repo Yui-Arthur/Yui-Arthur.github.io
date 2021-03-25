@@ -81,6 +81,7 @@
 		$result=mysqli_query($link,$sql);
 		
 		$record=mysqli_num_rows($result);
+		echo "1";
 		
 		if($record>0)
 		{
