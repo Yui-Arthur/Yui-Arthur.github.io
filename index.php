@@ -59,7 +59,14 @@
 	session_start();
 	if(isset($_POST['pw']))
 	{
-		$link=@mysqli_connect('ec2-107-22-245-82.compute-1.amazonaws.com','lntmwnajpnrsuu','028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac','d7eeaut5vsohsq');
+		$host="ec2-107-22-245-82.compute-1.amazonaws.com";
+		$user="lntmwnajpnrsuu";
+		$password="028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac";
+		$dataname="d7eeaut5vsohsq";
+		$port="5432";
+		$URL="postgres://lntmwnajpnrsuu:028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac@ec2-107-22-245-82.compute-1.amazonaws.com:5432/d7eeaut5vsohsq";
+
+		$link=@mysqli_connect("$host","$user","$password","$dataname","$port","$URL");
 		
 		if(!$link)
 		{
