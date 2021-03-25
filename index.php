@@ -73,7 +73,7 @@
 			echo "erro";
 			exit();
 		}
-		echo "1";
+		
 		$name=$_POST['username'];
 		$pw=$_POST['pw'];
 		
@@ -85,7 +85,7 @@
 		if($record>0)
 		{
 			$_SESSION['login_session']=true;
-			header("Location: ../index.html");
+			echo "1";
 		}
 		else
 			$_SESSION['login_session']=false;
