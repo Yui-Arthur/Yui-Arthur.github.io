@@ -39,13 +39,13 @@
     
 <main class="form-signin">
   <div style="border-color:#86868b;border-style:solid;border-width:2px 2px;padding-left: 10px;padding-right: 10px;">
-  <form action="index.html" method="POST">
+  <form action="index.php" method="POST">
     <img class="mb-4" src="image/na-team_logo.png" alt="" width="150" height="150">
     <h1 class="h3 mb-3 fw-normal">宿營登入</h1>
     <label for="inputEmail" class="visually-hidden">Email address</label>
-    <input type="text" id="input" class="form-control" placeholder="" required >
+    <input type="text" name="username" id="input" class="form-control" placeholder="" required >
     <label for="inputPassword" class="visually-hidden">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <input type="password" name="pw" id="inputPassword" class="form-control" placeholder="Password" required>
     <div class="checkbox mb-3">
       <label>
         <input type="checkbox" value="remember-me"> Remember me
@@ -54,9 +54,43 @@
     <button class="w-100 btn btn-lg btn-primary" type="submit">登入</button>
     <p class="mt-5 mb-3 text-muted">&copy; 2021-NUK-CSIE-CAMPING</p>
   </form>
+	
+	<?php
+	session_start();
+	if(isset($_POST['pw']))
+	{
+		$link=@mysqli_connect('ec2-107-22-245-82.compute-1.amazonaws.com','lntmwnajpnrsuu','028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac','d7eeaut5vsohsq');
+		
+		if(!$link)
+		{
+			echo "erro";
+			exit();
+		}
+		
+		$name=$_POST['username'];
+		$pw=$_POST['pw'];
+		
+		$sql="SELECT * FROM 個人資料 WHERE password='" . $pw ."' AND name='" . $name ."'";
+		$result=mysqli_query($link,$sql);
+		
+		$record=mysqli_num_rows($result);
+		
+		if($record>0)
+		{
+			$_SESSION['login_session']=true;
+			header("Location: ../index.html");
+		}
+		else
+			$_SESSION['login_session']=false;
+		
+	}
+		
+	
+	?>
 </div>
 </main>
-
+	
+	
 
     
   </body>
