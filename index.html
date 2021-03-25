@@ -4,7 +4,7 @@
   <meta name="description" content="">
   <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
   <meta name="generator" content="Hugo 0.79.0">
-  <title>Signin Template · Bootstrap v5.0</title>
+  <title>CSIE Camping</title>
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
@@ -33,17 +33,17 @@
   <!-- Custom styles for this template -->
   <link href="signin.css" rel="stylesheet">
 </head>
-<body class="text-center" background="image/background.jpg">
+<body class="text-center">
   
 <main class="form-signin" >
-<div style="border-color:#86868b;border-style:solid;border-width:2px 2px;padding-left: 10px;padding-right:10px;padding-top: 30px;background-color: white;">
-<form action="index.html" method="POST"  >
-  <img class="mb-4" src="image/na-team_logo.png" alt="" width="150" height="150"> 
+<div style="border-color:#86868b;border-style:solid;border-width:2px 2px;padding-left: 20px;padding-right:20px;padding-top: 30px;background-color: white;border-radius:10px;">
+<form action="index.php" method="POST"  >
+  <img class="mb-4" src="image/brchanghead.jpg" alt="" width="150" height="170"> 
   <h1 class="h3 mb-3 fw-normal">宿營登入</h1>
   
-  <input type="text" id="input" class="form-control" placeholder="Account" required="">
- 
-  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+  <input type="text" name="username" id="input" class="form-control" placeholder="Account" required="">
+	
+  <input type="password" name="pw" id="inputPassword" class="form-control" placeholder="Password" required="">
   <div class="checkbox mb-3">
     <label>
       <input type="checkbox" value="remember-me"> Remember me
@@ -53,6 +53,47 @@
   <p class="mt-5 mb-3 text-muted">© 2021-NUK-CSIE-CAMPING</p>
 </form>
 </div>
+<!--
+<?php
+	session_start();
+	if(isset($_POST['pw']))
+	{
+		$host="ec2-107-22-245-82.compute-1.amazonaws.com";
+		$user="lntmwnajpnrsuu";
+		$password="028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac";
+		$dataname="d7eeaut5vsohsq";
+		$port="5432";
+		$URL="postgres://lntmwnajpnrsuu:028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac@ec2-107-22-245-82.compute-1.amazonaws.com:5432/d7eeaut5vsohsq";
+
+		$link=@mysqli_connect("$host","$user","$password","$dataname","$port");
+		
+		if(!$link)
+		{
+			echo "erro";
+			exit();
+		}
+		
+		$name=$_POST['username'];
+		$pw=$_POST['pw'];
+		
+		$sql="SELECT * FROM 個人資料 WHERE password='" . $pw ."' AND name='" . $name ."'";
+		$result=mysqli_query($link,$sql);
+		
+		$record=mysqli_num_rows($result);
+		
+		if($record>0)
+		{
+			$_SESSION['login_session']=true;
+			echo "1";
+		}
+		else
+			$_SESSION['login_session']=false;
+		
+	}
+		
+	
+	?>
+-->
 </main>
 
 
