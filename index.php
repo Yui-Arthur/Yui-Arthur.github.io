@@ -76,7 +76,7 @@
 		
 		$name=$_POST['username'];
 		$pw=$_POST['pw'];
-		echo "$name   $pw";
+		
 		$sql="SELECT * FROM 個人資料 WHERE password='" . $pw ."' AND name='" . $name ."'";
 		$result=mysqli_query($link,$sql);
 		
@@ -94,6 +94,7 @@
 			header("Location: session.php");
 		}
 		header("Location: session.php");
+		echo "$name   $pw";
 	}
 		
 	
