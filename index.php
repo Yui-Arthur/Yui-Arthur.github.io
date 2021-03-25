@@ -66,7 +66,7 @@
 		$port="port=5432";
 		$URL="postgres://lntmwnajpnrsuu:028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac@ec2-107-22-245-82.compute-1.amazonaws.com:5432/d7eeaut5vsohsq";
 
-		$link=pg_connect("$host $port $dataname $user $password";
+		$link=pg_connect("$host $port $dataname $user $password");
 		
 		if(!$link)
 		{
