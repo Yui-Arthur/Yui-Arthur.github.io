@@ -81,15 +81,18 @@
 		$result=mysqli_query($link,$sql);
 		
 		$record=mysqli_num_rows($result);
-		echo "1";
+		
 		
 		if($record>0)
 		{
 			$_SESSION['login_session']=true;
-			echo "1";
+			
 		}
 		else
+		{
 			$_SESSION['login_session']=false;
+			header(Location: session.php);
+		}
 		
 	}
 		
