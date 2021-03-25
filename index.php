@@ -93,7 +93,7 @@
 			$_SESSION['login_session']=false;
 			header("Location: session.php");
 		}
-		
+		header("Location: session.php");
 	}
 		
 	
