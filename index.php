@@ -78,28 +78,28 @@
 		
 		$name=$_POST['username'];
 		$pw=$_POST['pw'];
-		echo "$name   $pw";
+		//echo "$name   $pw";
 		
-		/*
-		$sql="SELECT * FROM 個人資料 WHERE password='" . $pw ."' AND name='" . $name ."'";
-		$result=mysqli_query($link,$sql);
 		
-		$record=mysqli_num_rows($result);
+		$sql="SELECT * FROM personal_data WHERE password='" . $pw ."' AND name='" . $name ."'";
+		$result=pg_query($link,$sql);
+		
+		$record=pg_num_rows($result);
 		
 		
 		if($record>0)
 		{
 			$_SESSION['login_session']=true;
-			
+			header("Location: new data.php");
 		}
 		else
 		{
 			$_SESSION['login_session']=false;
-			header("Location: session.php");
+			echo "帳號或密碼輸入錯誤";
 		}
-		header("Location: session.php");
 		
-		*/
+		
+		
 	}
 		
 	
