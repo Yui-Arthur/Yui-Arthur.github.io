@@ -55,17 +55,19 @@
 </form>
 </div>
 
+
 <?php
 	session_start();
 	if(isset($_POST['pw']))
 	{
+		
 		$host="host=ec2-107-22-245-82.compute-1.amazonaws.com";
 		$user="user=lntmwnajpnrsuu";
 		$password="password=028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac";
 		$dataname="dbname=d7eeaut5vsohsq";
 		$port="port=5432";
 		$URL="postgres://lntmwnajpnrsuu:028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac@ec2-107-22-245-82.compute-1.amazonaws.com:5432/d7eeaut5vsohsq";
-
+		//phpinfo();
 		$link=pg_connect("$host $port $dataname $user $password");
 		
 		if(!$link)
@@ -76,7 +78,9 @@
 		
 		$name=$_POST['username'];
 		$pw=$_POST['pw'];
+		echo "$name   $pw";
 		
+		/*
 		$sql="SELECT * FROM 個人資料 WHERE password='" . $pw ."' AND name='" . $name ."'";
 		$result=mysqli_query($link,$sql);
 		
@@ -94,7 +98,8 @@
 			header("Location: session.php");
 		}
 		header("Location: session.php");
-		echo "$name   $pw";
+		
+		*/
 	}
 		
 	
