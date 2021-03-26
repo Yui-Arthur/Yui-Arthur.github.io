@@ -58,6 +58,11 @@
 
 <?php
 	session_start();
+	
+	if($_SESSION['login_session']==true)
+		header("Location: new data.php");
+	
+		
 	if(isset($_POST['pw']))
 	{
 		
@@ -94,7 +99,6 @@
 		}
 		else
 		{
-			$_SESSION['login_session']=false;
 			echo "帳號或密碼輸入錯誤";
 		}
 		
