@@ -51,10 +51,10 @@
     </label>
   </div>
   <button class="w-100 btn btn-lg btn-primary" type="submit" style="background-color:#EEFFBB;color: black;">登入</button>
-  <p class="mt-5 mb-3 text-muted">© 2021-NUK-CSIE-CAMPING</p>
+ 
 </form>
-</div>
 
+<br>
 
 <?php
 	session_start();
@@ -108,6 +108,9 @@
 		
 	
 	?>
+	
+	 <p class="mt-5 mb-3 text-muted">© 2021-NUK-CSIE-CAMPING</p>
+	 </div>
 
 </main>
 

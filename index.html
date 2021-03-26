@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +40,7 @@
 <div style="border-color:#86868b;border-style:solid;border-width:2px 2px;padding-left: 20px;padding-right:20px;padding-top: 30px;background-color: white;border-radius:10px;">
 <form action="index.php" method="POST"  >
   <img class="mb-4" src="image/brchanghead.jpg" alt="" width="150" height="170"> 
-  <h1 class="h3 mb-3 fw-normal">宿營登入</h1>
+  <h1 class="h3 mb-3 fw-normal">Login</h1>
   
   <input type="text" name="username" id="input" class="form-control" placeholder="Account" required="">
 	
@@ -53,19 +54,26 @@
   <p class="mt-5 mb-3 text-muted">© 2021-NUK-CSIE-CAMPING</p>
 </form>
 </div>
-<!--
+
+
 <?php
 	session_start();
+	
+	if($_SESSION['login_session']==true)
+		header("Location: new data.php");
+	
+		
 	if(isset($_POST['pw']))
 	{
-		$host="ec2-107-22-245-82.compute-1.amazonaws.com";
-		$user="lntmwnajpnrsuu";
-		$password="028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac";
-		$dataname="d7eeaut5vsohsq";
-		$port="5432";
+		
+		$host="host=ec2-107-22-245-82.compute-1.amazonaws.com";
+		$user="user=lntmwnajpnrsuu";
+		$password="password=028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac";
+		$dataname="dbname=d7eeaut5vsohsq";
+		$port="port=5432";
 		$URL="postgres://lntmwnajpnrsuu:028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac@ec2-107-22-245-82.compute-1.amazonaws.com:5432/d7eeaut5vsohsq";
-
-		$link=@mysqli_connect("$host","$user","$password","$dataname","$port");
+		//phpinfo();
+		$link=pg_connect("$host $port $dataname $user $password");
 		
 		if(!$link)
 		{
@@ -75,25 +83,32 @@
 		
 		$name=$_POST['username'];
 		$pw=$_POST['pw'];
+		//echo "$name   $pw";
 		
-		$sql="SELECT * FROM 個人資料 WHERE password='" . $pw ."' AND name='" . $name ."'";
-		$result=mysqli_query($link,$sql);
 		
-		$record=mysqli_num_rows($result);
+		$sql="SELECT * FROM personal_data WHERE password='" . $pw ."' AND name='" . $name ."'";
+		$result=pg_query($link,$sql);
+		
+		$record=pg_num_rows($result);
+		
 		
 		if($record>0)
 		{
 			$_SESSION['login_session']=true;
-			echo "1";
+			header("Location: new data.php");
 		}
 		else
-			$_SESSION['login_session']=false;
+		{
+			echo "帳號或密碼輸入錯誤";
+		}
+		
+		
 		
 	}
 		
 	
 	?>
--->
+
 </main>
 
 
