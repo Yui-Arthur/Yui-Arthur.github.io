@@ -82,11 +82,13 @@
 		}
 		
 		$name=$_POST['username'];
+		//$pw=;
+		
 		$pw=$_POST['pw'];
-		//echo "$name   $pw";
 		
 		
-		$sql="SELECT * FROM personal_data WHERE password='" . $pw ."' AND name='" . $name ."'";
+		
+		$sql="SELECT * FROM personal_data WHERE name='" . $name ."'";
 		$result=pg_query($link,$sql);
 		
 		$record=pg_num_rows($result);
@@ -94,12 +96,25 @@
 		
 		if($record>0)
 		{
-			$_SESSION['login_session']=true;
-			header("Location: new data.php");
+			$row_result=pg_fetch_assoc($result);
+			echo "$pw    ";
+			echo $row_result['password'];
+			if(password_verify($pw,$row_result['password']))
+			{
+				$_SESSION['login_session']=true;
+				pg_close($link);
+				header("Location: new data.php");
+			}
+			else
+			{
+			echo "帳號或密碼輸入錯誤";
+			pg_close($link);
+			}
 		}
 		else
 		{
 			echo "帳號或密碼輸入錯誤";
+			pg_close($link);
 		}
 		
 		
