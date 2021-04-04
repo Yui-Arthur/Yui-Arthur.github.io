@@ -97,8 +97,6 @@
 		if($record>0)
 		{
 			$row_result=pg_fetch_assoc($result);
-			echo "$pw    ";
-			echo $row_result['password'];
 			if(password_verify($pw,$row_result['password']))
 			{
 				$_SESSION['login_session']=true;
