@@ -62,6 +62,8 @@
 	if($_SESSION['login_session']==true)
 		header("Location: new data.php");
 	
+			
+		
 		
 	if(isset($_POST['pw']))
 	{
@@ -81,27 +83,44 @@
 			exit();
 		}
 		
-		$name=$_POST['username'];
-		//$pw=;
 		
+	
+		
+		$name=$_POST['username'];	
 		$pw=$_POST['pw'];
 		
-		
-		
+	
 		$sql="SELECT * FROM personal_data WHERE name='" . $name ."'";
 		$result=pg_query($link,$sql);
-		
 		$record=pg_num_rows($result);
 		
-		
+				
 		if($record>0)
 		{
 			$row_result=pg_fetch_assoc($result);
 			if(password_verify($pw,$row_result['password']))
 			{
-				$_SESSION['login_session']=true;
+				
+				$user_id=$row_result['id'];
+				
+				
+				$sql="SET time zone 'ROC'";
+				pg_query($link,$sql);
+				
+				$sql="SELECT LOCALTIMESTAMP(0)";
+				$result=pg_query($link,$sql);	
+				$row_result=pg_fetch_assoc($result);
+				$today=$row_result['localtimestamp'];
+				$sql="INSERT INTO login_record (user_id,time) VALUES ('$user_id','$today')";
+				
+				if(pg_query($link,$sql))
+				{
 				pg_close($link);
+				$_SESSION['login_session']=true;
 				header("Location: new data.php");
+				}
+				else
+				echo "錯誤";
 			}
 			else
 			{
