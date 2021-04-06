@@ -45,6 +45,61 @@
 		
 		pg_close($link);
 	?>
+	
+	<form action="new data.php" method="post">
+	
+		<input type="number" name="add_coin" placeholder="0" required="required">
+		<input type="submit">
+	</form>
+	
+	<?php
+		if(isset($_POST['add_coin']))
+		{
+			$add_coin=$_POST['add_coin'];
+			
+			$link=pg_connect("$host $port $dataname $user $password");
+			
+		
+			$id=$_SESSION['user'];
+			$sql="INSERT INTO coin_record (user_id,change_record) VALUES ('$id','$add_coin')";
+			
+			if(pg_query($link,$sql))
+			{
+				$sql="UPDATE team_coin SET coin_number=coin_number+".$add_coin."WHERE team='".$_SESSION['team']."'";
+				if(!pg_query($link,$sql))
+				echo "硬幣增減失敗";
+			
+			
+			}
+			else
+			echo "紀錄儲存失敗";
+			
+		
+			pg_close($link);
+			
+			header("Location: new data.php");
+			
+		}
+		
+	?>
+	
+	
+	<table>
+	
+	<?php
+		$link=pg_connect("$host $port $dataname $user $password");
+		$sql="SELECT * FROM coin_record";
+		$result=pg_query($link,$sql);
+		while($row_result=pg_fetch_assoc($result))
+		{
+			echo "<tr>";
+			echo "<td>".$row_result["user_id"]."</td>";
+			echo "<td>".$row_result["change_record"]."枚硬幣</td>";
+			echo "</tr>";
+		}
+	?>
+	
+	</table>
 	<a href="logout.php">登出<a/>
 	
 	

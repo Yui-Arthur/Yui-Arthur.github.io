@@ -117,6 +117,7 @@
 				{
 				pg_close($link);
 				$_SESSION['team']=$user_team;
+				$_SESSION['user']=$user_id;
 				header("Location: new data.php");
 				}
 				else
