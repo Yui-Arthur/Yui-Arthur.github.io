@@ -56,12 +56,12 @@
 		if(isset($_POST['add_coin']))
 		{
 			$add_coin=$_POST['add_coin'];
-			
+			$change_record=$add_coin."枚硬幣 給".$_SESSION['team']."小隊";
 			$link=pg_connect("$host $port $dataname $user $password");
 			
 		
 			$id=$_SESSION['user'];
-			$sql="INSERT INTO coin_record (user_id,change_record) VALUES ('$id','$add_coin')";
+			$sql="INSERT INTO coin_record (user_id,change_record) VALUES ('$id','$change_record')";
 			
 			if(pg_query($link,$sql))
 			{
@@ -93,8 +93,8 @@
 		while($row_result=pg_fetch_assoc($result))
 		{
 			echo "<tr>";
-			echo "<td>".$row_result["user_id"]."</td>";
-			echo "<td>".$row_result["change_record"]."枚硬幣</td>";
+			echo "<td>".$row_result["user_id"]."發送</td>";
+			echo "<td>".$row_result["change_record"]."</td>";
 			echo "</tr>";
 		}
 	?>
