@@ -59,7 +59,7 @@
 <?php
 	session_start();
 	
-	if($_SESSION['login_session']==true)
+	if($_SESSION['team']!='X')
 		header("Location: new data.php");
 	
 			
@@ -102,7 +102,7 @@
 			{
 				
 				$user_id=$row_result['id'];
-				
+				$user_team=$row_result['team'];
 				
 				$sql="SET time zone 'ROC'";
 				pg_query($link,$sql);
@@ -116,7 +116,7 @@
 				if(pg_query($link,$sql))
 				{
 				pg_close($link);
-				$_SESSION['login_session']=true;
+				$_SESSION['team']=$user_team;
 				header("Location: new data.php");
 				}
 				else
@@ -125,12 +125,14 @@
 			else
 			{
 			echo "帳號或密碼輸入錯誤";
+			$_SESSION['team']='X';
 			pg_close($link);
 			}
 		}
 		else
 		{
 			echo "帳號或密碼輸入錯誤";
+			$_SESSION['team']='X';
 			pg_close($link);
 		}
 		

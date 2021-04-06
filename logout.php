@@ -7,7 +7,7 @@
 <body>
 	<?php
 		session_start();
-		$_SESSION['login_session']=false;
+		$_SESSION['team']='X';
 		header("Location: index.php");
 	?>
 	
