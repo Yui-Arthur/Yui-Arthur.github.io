@@ -30,7 +30,7 @@
 	
 
 	<p>更改密碼</p>
-	<form action="new data.php" method="POST"> 
+	<form action="change_pw.php" method="POST"> 
 		<input type="text" name="pw"  placeholder="Password" required="">
 		<input type="submit">
 	</form>
