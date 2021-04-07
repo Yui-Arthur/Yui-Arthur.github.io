@@ -4,6 +4,7 @@
 	<title>team</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta  charset="utf-8" />
+	<link rel="icon" href="favicon.jpg" type="image/x-icon">
 </head>
 <body>
 	<?php
@@ -16,7 +17,34 @@
 		echo "成功登入<br>".$_SESSION['user'];
 		echo "<h1>".$_SESSION['team']."小隊</h1>";
 		
+	?>
+	
+	<form action="new data.php" method="post">
+	
 		
+		<select name="change_team" required="required">
+			<option value="X">改變小隊</option>
+			<option value="A">A小隊</option>
+			<option value="B">B小隊</option>
+			<option value="C">C小隊</option>
+			<option value="D">D小隊</option>
+		</select>
+		
+		<input type="submit">
+	</form>
+	
+	<?php
+		if(isset($_POST['change_team']))
+		{
+			if($_POST['change_team']!="X")
+			{
+				$_SESSION['team']=$_POST['change_team'];
+				header("Location: new data.php");
+			}
+		}
+	?>
+	
+	<?php
 		$host="host=ec2-107-22-245-82.compute-1.amazonaws.com";
 		$user="user=lntmwnajpnrsuu";
 		$password="password=028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac";
