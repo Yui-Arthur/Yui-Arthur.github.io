@@ -123,10 +123,15 @@
 								
 								if(pg_query($link,$sql))
 								{
-								pg_close($link);
-								$_SESSION['team']=$user_team;
-								$_SESSION['user']=$user_id;
-								header("Location: new data.php");
+									pg_close($link);
+									$_SESSION['user']=$user_id;
+									if($pw==$name)
+									header("Location: change_pw.php");
+									else
+									{
+										$_SESSION['team']=$user_team;	
+										header("Location: new data.php");
+									}
 								}
 								else
 								echo "錯誤";

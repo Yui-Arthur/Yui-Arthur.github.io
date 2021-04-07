@@ -10,7 +10,7 @@
 		session_start();
 		
 		if($_SESSION['team']=='')
-		header("Location: index.php");
+		header("Location: logout.php");
 	
 	
 		echo "成功登入<br>".$_SESSION['user'];
@@ -127,40 +127,7 @@
 	<br>
 	
 	
-	<p>更改密碼</p>
-	<form action="new data.php" method="POST"> 
-		<input type="text" name="pw"  placeholder="Password" required="">
-		<input type="submit">
-	</form>
 	
-	
-	<?php
-		if(isset($_POST['pw']))
-		{
-			$link=pg_connect("$host $port $dataname $user $password");
-			$id=$_SESSION['user'];
-			$pw=$_POST['pw'];
-			$sql="SELECT * FROM personal_data WHERE id='".$id."'";
-			$result=pg_query($link,$sql);
-			
-			
-				
-			$pw=password_hash($_POST["pw"],PASSWORD_DEFAULT);
-				
-				
-			$sql="UPDATE personal_data SET password='".$pw."' WHERE id=".$id;
-				
-				if(pg_query($link,$sql))
-				header("Location: logout.php");
-				else
-				echo "失敗";
-				
-			
-			pg_close($link);
-		}
-		
-	
-	?>
 	
 	<br>
 	<a href="logout.php">登出<a/>
