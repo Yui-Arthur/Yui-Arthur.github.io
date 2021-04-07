@@ -2,6 +2,7 @@
 <html  lang="zh-Hant-TW">
 <head>
 	<title>team</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta  charset="utf-8" />
 </head>
 <body>
@@ -12,7 +13,7 @@
 		header("Location: index.php");
 	
 	
-		echo "成功登入<br>";
+		echo "成功登入<br>".$_SESSION['user'];
 		echo "<h1>".$_SESSION['team']."小隊</h1>";
 		
 		
@@ -49,35 +50,55 @@
 	<form action="new data.php" method="post">
 	
 		<input type="number" name="add_coin" placeholder="0" required="required">
+		
+		<select name="select_team" required="required">
+			<option value="X">選擇小隊</option>
+			<option value="A">A小隊</option>
+			<option value="B">B小隊</option>
+			<option value="C">C小隊</option>
+			<option value="D">D小隊</option>
+		</select>
+		
 		<input type="submit">
 	</form>
+	
+	
 	
 	<?php
 		if(isset($_POST['add_coin']))
 		{
-			$add_coin=$_POST['add_coin'];
-			$change_record=$add_coin."枚硬幣 給".$_SESSION['team']."小隊";
-			$link=pg_connect("$host $port $dataname $user $password");
-			
-		
-			$id=$_SESSION['user'];
-			$sql="INSERT INTO coin_record (user_id,change_record) VALUES ('$id','$change_record')";
-			
-			if(pg_query($link,$sql))
+			$select_team=$_POST['select_team'];
+			if($select_team!="X")
 			{
-				$sql="UPDATE team_coin SET coin_number=coin_number+".$add_coin."WHERE team='".$_SESSION['team']."'";
-				if(!pg_query($link,$sql))
-				echo "硬幣增減失敗";
+				
+				$add_coin=$_POST['add_coin'];
+				$change_record=$add_coin."枚硬幣 給".$select_team."小隊";
+				$link=pg_connect("$host $port $dataname $user $password");
+				
 			
-			
+				$id=$_SESSION['user'];
+				$sql="INSERT INTO coin_record (user_id,change_record) VALUES ('$id','$change_record')";
+				
+				if(pg_query($link,$sql))
+				{
+					$sql="UPDATE team_coin SET coin_number=coin_number+".$add_coin."WHERE team='".$select_team."'";
+					if(!pg_query($link,$sql))
+					echo "硬幣增減失敗";
+					else
+					header("Location: new data.php");
+				
+				}
+				else
+				echo "紀錄儲存失敗";
+				
+				
+				pg_close($link);
+				
+				
 			}
 			else
-			echo "紀錄儲存失敗";
-			
+			echo "請選擇小隊";
 		
-			pg_close($link);
-			
-			header("Location: new data.php");
 			
 		}
 		
