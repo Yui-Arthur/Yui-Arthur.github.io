@@ -7,7 +7,7 @@
 <body>
 	<?php
 		session_start();
-		$_SESSION['team']='X';
+		unset($_SESSION['team']);
 		header("Location: index.php");
 	?>
 	

@@ -59,7 +59,7 @@
 <?php
 	session_start();
 	
-	if($_SESSION['team']!='X')
+	if(isset($_SESSION['team']))
 		header("Location: new data.php");
 	
 			
@@ -126,14 +126,12 @@
 			else
 			{
 			echo "帳號或密碼輸入錯誤";
-			$_SESSION['team']='X';
 			pg_close($link);
 			}
 		}
 		else
 		{
 			echo "帳號或密碼輸入錯誤";
-			$_SESSION['team']='X';
 			pg_close($link);
 		}
 		

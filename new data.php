@@ -8,7 +8,7 @@
 	<?php
 		session_start();
 		
-		if($_SESSION['team']=='X')
+		if($_SESSION['team']=='')
 		header("Location: index.php");
 	
 	
