@@ -100,12 +100,20 @@
 			{
 				
 				$add_coin=$_POST['add_coin'];
-				$change_record=$add_coin."枚硬幣 給".$select_team."小隊";
+				
 				$link=pg_connect("$host $port $dataname $user $password");
 				
+				$sql="SET time zone 'ROC'";
+				pg_query($link,$sql);
+				
+				$sql="SELECT LOCALTIMESTAMP(0)";
+				$result=pg_query($link,$sql);	
+				$row_result=pg_fetch_assoc($result);
+				$today=$row_result['localtimestamp'];
+			
 			
 				$id=$_SESSION['user'];
-				$sql="INSERT INTO coin_record (user_id,change_record) VALUES ('$id','$change_record')";
+				$sql="INSERT INTO coin_record (user_id,coin_change,give_team,change_time) VALUES ('$id','$add_coin','$select_team','$today')";
 				
 				if(pg_query($link,$sql))
 				{
@@ -132,20 +140,69 @@
 		
 	?>
 	
-	
-	<table>
+	<br>
+	<br>
+	<table  cellspacing=10>
+	<caption>發放硬幣紀錄</caption>
 	
 	<?php
 		$link=pg_connect("$host $port $dataname $user $password");
-		$sql="SELECT * FROM coin_record";
-		$result=pg_query($link,$sql);
-		while($row_result=pg_fetch_assoc($result))
+		
+
+		$sql="SET time zone 'ROC'";
+		pg_query($link,$sql);
+		
+		$sql="SELECT LOCALTIMESTAMP(0)";
+		$result=pg_query($link,$sql);	
+		$row_result=pg_fetch_assoc($result);
+		$today=$row_result['localtimestamp'];
+		
+		
+		$sql="SELECT * FROM coin_record ORDER BY change_time DESC";
+		$total_result=pg_query($link,$sql);
+		
+		
+		while($row_result=pg_fetch_assoc($total_result))
 		{
 			echo "<tr>";
-			echo "<td>".$row_result["user_id"]."發送</td>";
-			echo "<td>".$row_result["change_record"]."</td>";
+			echo "<td align='right'>".$row_result["user_id"]."發送</td>";
+			
+			echo "<td align='right'>".$row_result["coin_change"]."枚硬幣給</td>";
+			echo "<td>".$row_result["give_team"]."小隊</td>";
+			
+			$sql="SELECT age (now(),'".$row_result["change_time"]."')";
+			$result=pg_query($link,$sql);
+			$time_result=pg_fetch_assoc($result);
+			
+			
+			echo "<td align='right'>";
+			
+			$sql="SELECT date_part ('DAY',interval '".$time_result['age']."')";
+			$result=pg_query($link,$sql);
+			$day_result=pg_fetch_assoc($result);
+			
+			if($day_result['date_part']!=0)
+			echo $day_result['date_part']."天";
+			
+			$sql="SELECT date_part ('HOUR',interval '".$time_result['age']."')";
+			$result=pg_query($link,$sql);
+			$hour_result=pg_fetch_assoc($result);
+			
+			
+			if($hour_result['date_part']!=0)
+			echo $hour_result['date_part']."小時";
+			
+			$sql="SELECT date_part ('MINUTE',interval '".$time_result['age']."')";
+			$result=pg_query($link,$sql);
+			$minute_result=pg_fetch_assoc($result);
+			
+			echo $minute_result['date_part']."分鐘前";
+			echo "</td>";
 			echo "</tr>";
+			
 		}
+		
+		pg_close($link);
 	?>
 	
 	</table>
