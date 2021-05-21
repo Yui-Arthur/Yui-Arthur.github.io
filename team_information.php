@@ -92,7 +92,7 @@
 					if($result)
 					{
 						$row_result=pg_fetch_assoc($result);
-						echo "<p class='h2' > <img class='mb-4' src='image/coin.jpg' alt='' width='100' height='100'> " .$row_result['coin_number']."枚金幣</p>";
+						echo "<p class='h2' > <img class='mb-4' src='image/coin.jpg' alt='' width='100' height='100'>x" .$row_result['coin_number']."</p>";
 					}
 					else
 						echo "連接錯誤";
