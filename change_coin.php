@@ -182,7 +182,86 @@
 		
 	?>
 	
-
+	<div class="mb-4">
+			<div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
+				
+					<div class="tile-header">
+						<table class="table table-borderless">
+							<tr>
+								<td class="h6" align='middle'>發送者</th>
+								<td class="h6" align='middle'>數量</th>
+								<td class="h6" align='middle'>對象</th>
+								<td class="h6" align='middle'>時間</th>
+							</tr>
+					
+						
+							<?php
+							
+								$link=pg_connect("$host $port $dataname $user $password");
+								
+								//設定時區
+								$sql="SET time zone 'ROC'";
+								pg_query($link,$sql);
+								
+								//取得紀錄由時間新到舊
+								$sql="SELECT * FROM coin_record ORDER BY change_time DESC";
+								$total_result=pg_query($link,$sql);
+								
+								
+								while($row_result=pg_fetch_assoc($total_result))
+								{
+									//全都靠中
+									echo "<tr>";
+									//顯示id
+									echo "<td class='h6' align='middle'>".$row_result["name"]."</td>";
+									//顯示硬幣改變數量
+									echo "<td td class='h6' align='middle'>".$row_result["coin_change"]."</td>";
+									echo "<td td class='h6' align='middle'>".$row_result["give_team"]."小隊</td>";
+									
+									//取得現在時間和紀錄時間的差值
+									$sql="SELECT age (now(),'".$row_result["change_time"]."')";
+									$result=pg_query($link,$sql);
+									$time_result=pg_fetch_assoc($result);
+									
+									
+									echo "<td class='h6' align='middle'>";
+									
+									//取得差值的天數
+									$sql="SELECT date_part ('DAY',interval '".$time_result['age']."')";
+									$result=pg_query($link,$sql);
+									$day_result=pg_fetch_assoc($result);
+									
+									//如果為0就不顯示
+									if($day_result['date_part']!=0)
+									echo $day_result['date_part']."天";
+									
+									//取得差值的小時
+									$sql="SELECT date_part ('HOUR',interval '".$time_result['age']."')";
+									$result=pg_query($link,$sql);
+									$hour_result=pg_fetch_assoc($result);
+									
+									//如果為0就不顯示
+									if($hour_result['date_part']!=0)
+									echo $hour_result['date_part']."小時";
+									
+									//取得差值的分鐘
+									$sql="SELECT date_part ('MINUTE',interval '".$time_result['age']."')";
+									$result=pg_query($link,$sql);
+									$minute_result=pg_fetch_assoc($result);
+									
+									echo $minute_result['date_part']."分鐘前";
+									echo "</td>";
+									echo "</tr>";
+									
+								}
+								
+								pg_close($link);
+							?>
+						</table>
+					
+				</div>
+			</div>
+		</div>
     
 
 	<figure class="text-center">
