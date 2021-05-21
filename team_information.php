@@ -145,6 +145,7 @@
 			</div>
 		</div>
 		<!-- 分頁標籤 -->
+		<br>
 		<div class="swiper-pagination"></div>
 	</div>
 		
