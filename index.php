@@ -62,24 +62,26 @@
 			<?php
 				session_start();
 				
+				//檢查有沒有登入過
 				if(isset($_SESSION['team']))
-					header("Location: new data.php");
+					header("Location: team_information.php");
 				
 						
 					
-					
+				//檢查是否按下送出
 				if(isset($_POST['pw']))
 				{
-					
+					//連接資料庫
 					$host="host=ec2-107-22-245-82.compute-1.amazonaws.com";
 					$user="user=lntmwnajpnrsuu";
 					$password="password=028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac";
 					$dataname="dbname=d7eeaut5vsohsq";
 					$port="port=5432";
 					$URL="postgres://lntmwnajpnrsuu:028ad9b79bccced52ba347deafc89d9945f5b1f72f397737ee41ddef29e55cac@ec2-107-22-245-82.compute-1.amazonaws.com:5432/d7eeaut5vsohsq";
-					//phpinfo();
 					$link=pg_connect("$host $port $dataname $user $password");
 					
+					
+					//確認是否成功
 					if(!$link)
 					{
 						echo "erro";
@@ -88,11 +90,12 @@
 					
 					
 				
-					
+					//獲得輸入的帳號密碼
 					$name=$_POST['username'];	
 					$pw=$_POST['pw'];
 					
 					
+					//特殊符號檢查
 					if(preg_match("/[ '.,:;*?~`!@#$%^& =)(<>{}]|\]|\[|\/|\\\|\"|\|/",$name))
 					{
 						echo "不要輸入特殊符號^_^";
@@ -101,39 +104,48 @@
 					else
 					{
 				
+						//查詢帳號
 						$sql="SELECT * FROM personal_data WHERE name='" . $name ."'";
 						$result=pg_query($link,$sql);
 						$record=pg_num_rows($result);
 						
-								
+						//確定有無帳號	
 						if($record>0)
 						{
 							$row_result=pg_fetch_assoc($result);
+							//密碼加密檢查
 							if(password_verify($pw,$row_result['password']))
 							{
 								
 								$user_id=$row_result['id'];
 								$user_team=$row_result['team'];
 								
+								//設定時區
 								$sql="SET time zone 'ROC'";
 								pg_query($link,$sql);
 								
+								//獲取現在時間
 								$sql="SELECT LOCALTIMESTAMP(0)";
 								$result=pg_query($link,$sql);	
 								$row_result=pg_fetch_assoc($result);
 								$today=$row_result['localtimestamp'];
+								
+								//id和登入時間放進 login_record 資料庫
 								$sql="INSERT INTO login_record (user_id,time) VALUES ('$user_id','$today')";
 								
 								if(pg_query($link,$sql))
 								{
 									pg_close($link);
 									$_SESSION['user']=$user_id;
+									
 									if($pw==$name)
+									//如果是預設密碼就進入 change_pw
 									header("Location: change_pw.php");
 									else
 									{
+										//登入資料紀錄為team
 										$_SESSION['team']=$user_team;	
-										header("Location: new data.php");
+										header("Location: team_information.php");
 									}
 								}
 								else

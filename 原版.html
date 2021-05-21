@@ -1,0 +1,282 @@
+
+<html lang="zh-tw"><head>
+    <!--修正編碼-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--調整手機裝置的螢幕顯示-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <!--網站圖示-->
+    <link rel="icon" href="/static/imgs/favicon.ico" type="image/x-icon">
+    <!--樣式表（包含自訂樣式與Bootstrap樣板引擎）-->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--其他附加文件-->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!--字型引擎-->
+    <link href="/static/css/all.css" rel="stylesheet">
+
+    <title>隊伍資訊 - 高大資工宿營</title>
+</head>
+<body>
+
+    <!-- 收合側邊欄按鈕 -->
+    <script>$("#sidebar").toggleClass('active');</script>
+    <script>
+        $(function() {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+        $(function() {
+            $('#sidebarShow').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+
+    <!-- 側邊欄 -->
+    <div class="vertical-nav bg-white" id="sidebar" style="z-index: 200;">
+        <div class="py-4 px-3 mb-4 bg-light">
+            <button id="sidebarCollapse" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-chevron-left mr-2"></i></button>
+            <div class="media d-flex align-items-center">
+                <img src="/static/imgs/avatar-4.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+                <div class="media-body">
+                    <h4 class="m-0">高大資工宿營</h4>
+                    <p class="font-weight-light text-muted mb-0">波賽頓小隊員，您好</p>
+                </div>
+            </div>
+        </div>
+    
+        <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">資訊</p>
+    
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="/team" class="nav-link text-dark">
+                    <i class="fa fa-stream mr-3 text-primary fa-fw"></i>
+                    隊伍資訊
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/domain" class="nav-link text-dark">
+                    <i class="fa fa-flag  mr-3 text-primary fa-fw"></i>
+                    占領戰
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/notice" class="nav-link text-dark">
+                    <i class="fa fa-comment-dots  mr-3 text-primary fa-fw"></i>
+                    通知
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/info" class="nav-link text-dark">
+                    <i class="fa fa-info-circle mr-3 text-primary fa-fw"></i>
+                    活動資訊
+                </a>
+            </li>
+        </ul>
+
+        <p class="text-gray font-weight-bold text-uppercase px-3 small py-4 mb-0">功能</p>
+
+        <ul class="nav flex-column bg-white mb-0">
+            <li class="nav-item">
+                <a href="/logout" class="nav-link text-dark">
+                    <i class="fa fa-sign-out-alt mr-3 text-primary fa-fw"></i>
+                    登出
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- 結束側邊欄 --> 
+    
+    <!-- 主要頁面內容 -->
+    <div class="page-content p-4" style="z-index: 100;">
+        
+        <button id="sidebarShow" type="button" class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4"><i class="fa fa-bars mr-2"></i><small class="text-uppercase font-weight-bold">Menu</small></button>
+
+        
+
+<!-- 加入樣式表 -->
+<link rel="stylesheet" href="/static/css/team_style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css" integrity="sha512-uCQmAoax6aJTxC03VlH0uCEtE0iLi83TW1Qh6VezEZ5Y17rTrIE+8irz4H4ehM7Fbfbm8rb30OkxVkuwhXxrRg==" crossorigin="anonymous">
+<!-- JS函式庫 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js" integrity="sha512-VHsNaV1C4XbgKSc2O0rZDmkUOhMKPg/rIi8abX9qTaVDzVJnrDGHFnLnCnuPmZ3cNi1nQJm+fzJtBbZU9yRCww==" crossorigin="anonymous"></script>
+
+<script type="text/javascript"> //毫秒級倒數計時器
+$(document).ready(function () {
+    setInterval(function () {
+        $(".time_wrap").each(function () { //尋訪所有class屬性值為time_wrap元素
+            var Obj = this;
+            var endTime = new Date(parseInt($(Obj).attr('value')) * 1000); //獲取元素value值(時間)
+            var nowTime = new Date(); //獲取當前時間
+            var nMS = endTime.getTime() - nowTime.getTime(); //取得時間差(毫秒)
+            var nD = Math.floor(nMS / (1000 * 60 * 60 * 24));
+            var nH = Math.floor(nMS / (1000 * 60 * 60)) % 24;
+            var nM = Math.floor(nMS / (1000 * 60)) % 60;
+            var nS = Math.floor(nMS / 1000) % 60;
+            var nMS = Math.floor(nMS) % 1000;
+            if (nD >= 0) {
+                var strS = nS.toString().padStart(2, '0')
+                var strMS = nMS.toString().padStart(3, '0'); //補齊位數
+                var str = '<span class="timer">剩下 ' + nM + '分 ' + strS + '秒 ' + strMS + '毫秒';
+                $(Obj).html(str);
+            }
+            else {
+                var str = '<span class="timer">時間到 ';
+                $(Obj).html(str);
+            }
+        });
+    }, 1);
+}); 
+</script>
+
+<!-- 時間在地化 -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" integrity="sha256-AdQN98MVZs44Eq2yTwtoKufhnU+uZ7v2kXnD5vqzZVo=" crossorigin="anonymous"></script>
+<script>
+moment.locale("en");
+function flask_moment_render(elem) {
+$(elem).text(eval('moment("' + $(elem).data('timestamp') + '").' + $(elem).data('format') + ';'));
+$(elem).removeClass('flask-moment').show();
+}
+function flask_moment_render_all() {
+$('.flask-moment').each(function() {
+    flask_moment_render(this);
+    if ($(this).data('refresh')) {
+        (function(elem, interval) { setInterval(function() { flask_moment_render(elem) }, interval); })(this, $(this).data('refresh'));
+    }
+})
+}
+$(document).ready(function() {
+flask_moment_render_all();
+});
+</script>
+<script>
+moment.locale("zh_TW");
+</script>
+
+<!-- 滑動介面 -->
+<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+<div class="swiper-wrapper mb-3">
+    <div class="swiper-slide swiper-slide-active" style="width: 645px; margin-right: 30px;">
+        <div class="mb-4">
+            <div class="card shadow" style="border-radius: 25px;">
+                <div class="d-flex card-body justify-content-between">
+                    <div class="tile-header">
+                        <h4>小隊資產</h4>
+                        <span>賺錢乃資工基本之道</span>
+                    </div>
+                    <i class="fas fa-donate mt-2" style="font-size: 3rem; color: orange;"></i>
+                </div>
+                <div class="card-footer pb-2">
+                    <h5 class="m-2 pb-2" style="text-align: right;">擁有
+                        <span class="pct-counter">2020010052 </span>個古金幣
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-slide swiper-slide-next" style="width: 645px; margin-right: 30px;">
+        <div class="tile-progress tile-pink shadow" style="border-radius: 25px;">
+            <div class="tile-header" style="padding: 20px;">
+                <h4>小隊進度</h4>
+                <span>尋找線索，破解謎團</span>
+            </div>
+            <div class="tile-progressbar">
+                <span data-fill=" 63.63636363636363%" style="width:  63.63636363636363%;"></span>
+            </div>
+            <div class="tile-footer">
+                <h5>已取得
+                    <span class="pct-counter">14 </span>個線索
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 分頁標籤 -->
+<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span></div>
+<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+
+<!-- 初始化滑動介面 -->
+<script>
+var swiper = new Swiper('.swiper-container', {
+    spaceBetween: 30,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+});
+</script>
+
+
+<div class="mb-4">
+<div class="card shadow" style="border-radius: 25px;">
+    <div class="d-flex card-body justify-content-between">
+        <div class="tile-header">
+            <h4>功能卡狀態</h4>
+            <span>記得隨時來這裡看看</span>
+        </div>
+    </div>
+    <div class="text-white p-1">
+        
+
+        
+
+        
+
+        
+
+
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+    </div>
+</div>
+</div>
+
+
+<div class="mb-4">
+<div class="card shadow" style="border-radius: 25px;">
+    <div class="d-flex card-body justify-content-between">
+        <div class="tile-header">
+            <h4>交易資訊</h4>
+            <span>交易一定有風險，詳閱公開說明書</span>
+        </div>
+    </div>
+    <div class="card-footer pb-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>時間</th>
+                    <th>金額</th>
+                    <th>發送人</th>
+                </tr>
+            </thead>
+            <tbody class="justify-content-between">
+                
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+
+    </div>
+    <!-- 結束主要頁面內容 -->
+
+</body></html>-->
