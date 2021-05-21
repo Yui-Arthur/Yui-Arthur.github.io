@@ -105,7 +105,7 @@
 					{
 				
 						//查詢帳號
-						$sql="SELECT * FROM personal_data WHERE name='" . $name ."'";
+						$sql="SELECT * FROM personal_data WHERE user_id='" . $name ."'";
 						$result=pg_query($link,$sql);
 						$record=pg_num_rows($result);
 						
@@ -117,9 +117,10 @@
 							if(password_verify($pw,$row_result['password']))
 							{
 								
-								$user_id=$row_result['id'];
+								$user_id=$row_result['user_id'];
 								$user_team=$row_result['team'];
-								
+								$user_authority=$row_result['authority'];
+								$user_name=$row_result['name'];
 								//設定時區
 								$sql="SET time zone 'ROC'";
 								pg_query($link,$sql);
@@ -145,6 +146,8 @@
 									{
 										//登入資料紀錄為team
 										$_SESSION['team']=$user_team;	
+										$_SESSION['authority']=$user_authority;
+										$_SESSION['name']=$user_name;
 										header("Location: team_information.php");
 									}
 								}

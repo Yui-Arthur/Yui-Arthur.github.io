@@ -62,6 +62,7 @@
 		
 	?>
 	
+	
 		
 	
 		<figure class="text-center">
@@ -97,6 +98,12 @@
 					
 		?>
 	
+		<br>
+		<?php
+		if($_SESSION['authority']=='1')
+		echo "<a href='change_coin.php'>更改硬幣</a>";
+	
+		?>
 	
 		</figure>
 		
@@ -169,15 +176,15 @@
         <div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
             
                 
-					<p class='h3' > <img class='mb-4' src='image/penguin.jpg' alt='' width='100' height='100'>破冰 </p>
+					<p class='h3' >  <img class='mb-4' src='image/penguin.jpg' alt='' width='100' height='100'>破冰 </p>
 					<br>
-					<p class='h3' > <img class='mb-4' src='image/flag.png' alt='' width='100' height='100'>占領戰</p>
+					<p class='h3' >  <img class='mb-4' src='image/flag.png' alt='' width='100' height='100'>占領戰</p>
 					<br>
-					<p class='h3' > <img class='mb-4' src='image/boo.jpg' alt='' width='100' height='100'>夜教</p>
+					<p class='h3' >  <img class='mb-4' src='image/boo.jpg' alt='' width='100' height='100'>夜教</p>
 					<br>
-					<p class='h3' > <img class='mb-4' src='image/detective.png' alt='' width='100' height='100'>解謎 </p>
+					<p class='h3' >  <img class='mb-4' src='image/detective.png' alt='' width='100' height='100'>解謎 </p>
 					<br>
-					<p class='h3' > <img class='mb-4' src='image/water.png' alt='' width='100' height='100'>水大地 </p>
+					<p class='h3' >  <img class='mb-4' src='image/water.png' alt='' width='100' height='100'>水大地 </p>
 					<br>
 					
 					

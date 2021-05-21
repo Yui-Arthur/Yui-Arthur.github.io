@@ -159,7 +159,7 @@
 									//全都靠中
 									echo "<tr>";
 									//顯示id
-									echo "<td class='h6' align='middle'>".$row_result["user_id"]."</td>";
+									echo "<td class='h6' align='middle'>".$row_result["name"]."</td>";
 									//顯示硬幣改變數量
 									echo "<td class='h6' align='middle'>".$row_result["coin_change"]."</td>";
 									//echo "<td>".$row_result["give_team"]."小隊</td>";
