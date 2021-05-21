@@ -41,7 +41,7 @@ body {
   
   background: #a02e2e;
   background: -webkit-linear-gradient(to right, #e00874, #f1a414);
-  background: linear-gradient(to right, #ffffff, hsl(0, 0%, 100%));/*背景顏色*/
+  background: linear-gradient(to right, #24397e, hsl(273, 40%, 39%));/*背景顏色*/
   height: 100vh;
   overflow-x: hidden;
 }
