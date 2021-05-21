@@ -103,13 +103,13 @@
 					
 					
 					<br>
-					<p class='h2' > <img class='mb-4' src='image/flag.png' alt='' width='100' height='100'>總佔領時間</p>
+					<p class='h3' > <img class='mb-4' src='image/flag.png' alt='' width='100' height='100'>總佔領時間</p>
 					<br>
-					<p class='h2' > <img class='mb-4' src='image/boo.jpg' alt='' width='100' height='100'>夜教</p>
+					<p class='h3' > <img class='mb-4' src='image/boo.jpg' alt='' width='100' height='100'>夜教</p>
 					<br>
-					<p class='h2' > <img class='mb-4' src='image/fish.jpg' alt='' width='100' height='100'>水大地 </p>
+					<p class='h3' > <img class='mb-4' src='image/fish.jpg' alt='' width='100' height='100'>水大地 </p>
 					<br>
-					<p class='h2' > <img class='mb-4' src='image/penguin.jpg' alt='' width='100' height='100'>水大地 </p>
+					<p class='h3' > <img class='mb-4' src='image/penguin.jpg' alt='' width='100' height='100'>破冰 </p>
 					
 					
             
