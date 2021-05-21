@@ -55,10 +55,10 @@
 	
     <div class="mb-4">
         <div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.5);">
-            <figure class="text-center">
+            
                 
-                    
-				
+                    <div class="card-body">
+					
 					
 					<?php
 					//顯示小隊
@@ -103,12 +103,17 @@
 					
 					
 					<br>
-					<img class='mb-4' src='image/flag.png' alt='' width='100' height='100'>
+					<p class='h2' > <img class='mb-4' src='image/flag.png' alt='' width='100' height='100'>總佔領時間</p>
+					<br>
+					<p class='h2' > <img class='mb-4' src='image/boo.jpg' alt='' width='100' height='100'>夜教</p>
+					<br>
+					<p class='h2' > <img class='mb-4' src='image/fish.jpg' alt='' width='100' height='100'>水大地 </p>
+					<br>
+					<p class='h2' > <img class='mb-4' src='image/penguin.jpg' alt='' width='100' height='100'>水大地 </p>
 					
 					
-			
             
-					
+				
                 
             </div>
         </div>  
