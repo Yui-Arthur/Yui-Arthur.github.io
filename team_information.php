@@ -54,7 +54,7 @@
 		
 	
     <div class="mb-4">
-        <div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.5);">
+        <div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
             
                 
                     <div class="card-body">
