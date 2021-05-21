@@ -39,7 +39,7 @@
 		crossorigin="anonymous"></script>
 	
      
-	 <div class="page-content p-5" style="z-index: 100;">
+	 <div class="page-content p-4" style="z-index: 100;">
     
     <?php
 		session_start();
