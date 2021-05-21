@@ -130,8 +130,14 @@
                 
             </div>
             <div class="card-footer ">
-                <table class="table table-borderless ">
-                    <thead>
+				
+					<table class="table table-borderless ">
+					
+					<tr>
+						<td class="h6" align='middle'>發送者</th>
+						<td class="h6" align='middle'>數量</th>
+						<td class="h6" align='middle'>時間</th>
+					</tr>
                         <?php
 	
 							$link=pg_connect("$host $port $dataname $user $password");
@@ -150,12 +156,12 @@
 								if($row_result["give_team"]==$_SESSION['team'])
 								{
 									
-									//全都靠右
+									//全都靠中
 									echo "<tr>";
 									//顯示id
-									echo "<td align='middle'>".$row_result["user_id"]."發送</td>";
+									echo "<td class='h6' align='middle'>".$row_result["user_id"]."</td>";
 									//顯示硬幣改變數量
-									echo "<td align='middle'>".$row_result["coin_change"]."枚硬幣給</td>";
+									echo "<td class='h6' align='middle'>".$row_result["coin_change"]."</td>";
 									//echo "<td>".$row_result["give_team"]."小隊</td>";
 									
 									//取得現在時間和紀錄時間的差值
@@ -164,7 +170,7 @@
 									$time_result=pg_fetch_assoc($result);
 									
 									
-									echo "<td align='middle'>";
+									echo "<td class='h6' align='middle'>";
 									
 									//取得差值的天數
 									$sql="SELECT date_part ('DAY',interval '".$time_result['age']."')";
@@ -200,9 +206,10 @@
 							
 							pg_close($link);
 						?>
-                    </thead>
                     
-                </table>
+                    
+					</table>
+				
             </div>
         </div>
     </div>          
