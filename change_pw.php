@@ -47,7 +47,7 @@
                 
                     <div class="tile-header" style="padding: 20px;">
 					
-					<p class="h3">更改名子/密碼</p>
+					<p class="h3">更改名字/密碼</p>
 					<form action="change_pw.php" method="POST"> 
 						<input type="text" name="name"  placeholder="name" required="">
 						<input type="password" name="pw"  placeholder="Password" required="">
