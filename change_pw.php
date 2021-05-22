@@ -47,7 +47,7 @@
                 
                     <div class="tile-header" style="padding: 20px;">
 					
-					<p class="h3">更改名字/密碼</p>
+					<p class="h3">更改名字(發送硬幣時會顯示的名字 名字=\=帳號 可以是中文 )<br>密碼(不可以是學號)</p>
 					<form action="change_pw.php" method="POST"> 
 						<input type="text" name="name"  placeholder="name" required="">
 						<input type="password" name="pw"  placeholder="Password" required="">
@@ -72,27 +72,40 @@
 			$id=$_SESSION['user'];
 			$name=$_POST['name'];
 			$pw=$_POST['pw'];
-			$sql="SELECT * FROM personal_data WHERE user_id='".$id."'";
-			$result=pg_query($link,$sql);
 			
 			
-				
-			$pw=password_hash($_POST["pw"],PASSWORD_DEFAULT);
-				
-				
-			$sql="UPDATE personal_data SET name='" .$name."' , password='".$pw."' WHERE user_id='".$id."'";
-				
-				if(pg_query($link,$sql))
-				header("Location: logout.php");	
+			if(preg_match("/[ '.,:;*?~`!@#$%^& =)(<>{}]|\]|\[|\/|\\\|\"|\|/",$name))
+			{
+				echo "不要輸入特殊符號^_^";
+			}
+			else
+			{
+				if(preg_match("/[ '.,:;*?~`!@#$%^& =)(<>{}]|\]|\[|\/|\\\|\"|\|/",$pw))
+				{
+					echo "不要輸入特殊符號^_^";
+				}
 				else
-				echo "失敗";
+				{
+					$sql="SELECT * FROM personal_data WHERE user_id='".$id."'";
+					$result=pg_query($link,$sql);
+						
+					$pw=password_hash($_POST["pw"],PASSWORD_DEFAULT);
+						
+						
+					$sql="UPDATE personal_data SET name='" .$name."' , password='".$pw."' WHERE user_id='".$id."'";
+						
+						if(pg_query($link,$sql))
+						header("Location: logout.php");	
+						else
+						echo "失敗";
+					
+				}
 				
-			
-			
+					
 				
-			
-			
-			pg_close($link);
+				
+				pg_close($link);
+			}
 		}
 		
 	
