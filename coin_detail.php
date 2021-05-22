@@ -85,7 +85,7 @@
 					if($_SESSION['team']=='E')
 					{
 						echo "<h1>工作人員隊</h1>";
-						echo "<img class='mb-4' src='image/team".$_SESSION['team']. ".png' alt='' > ";
+						echo "<img class='mb-4' src='image/team".$_SESSION['team']. ".png' alt=''width='300' height='150' > ";
 					}
 					
 					if($_SESSION['team']!='E')
