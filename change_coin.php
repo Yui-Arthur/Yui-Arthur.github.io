@@ -77,8 +77,10 @@
 			
 			while($row_result=pg_fetch_assoc($total_result))
 			{
-				
+				if($row_result['team']!='E')
 				echo "<p class='h2' > <img class='mb-4' src='image/team".$row_result['team'].".jpg' alt='' width='100' height='100'>x" .$row_result['coin_number']."</p>";
+				else
+				echo "<p class='h2' > <img class='mb-4' src='image/team".$row_result['team'].".png' alt='' width='100' height='100'>x" .$row_result['coin_number']."</p>";
 			}
 		
 		?>
@@ -114,6 +116,7 @@
 								<option value="B">栗寶寶小隊</option>
 								<option value="C">魷魷小隊</option>
 								<option value="D">慢慢龜小隊</option>
+								<option value="E">工作人員隊</option>
 							</select>
 						
 						
@@ -204,7 +207,7 @@
 								pg_query($link,$sql);
 								
 								//取得紀錄由時間新到舊
-								$sql="SELECT * FROM coin_record ORDER BY change_time DESC";
+								$sql="SELECT * FROM coin_record ORDER BY change_time DESC limit 100";
 								$total_result=pg_query($link,$sql);
 								
 								

@@ -81,8 +81,14 @@
 					
 					if($_SESSION['team']=='D')
 					echo "<h1>慢慢龜隊</h1>";
+				
+					if($_SESSION['team']=='E')
+					{
+						echo "<h1>工作人員隊</h1>";
+						echo "<img class='mb-4' src='image/team".$_SESSION['team']. ".png' alt='' > ";
+					}
 					
-					
+					if($_SESSION['team']!='E')
 					echo "<img class='mb-4' src='image/team".$_SESSION['team']. ".jpg' alt='' width='150' height='170'> ";
 					
 					$link=pg_connect("$host $port $dataname $user $password");

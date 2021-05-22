@@ -82,8 +82,14 @@
 					
 					if($_SESSION['team']=='D')
 					echo "<h1>慢慢龜隊</h1>";
+				
+					if($_SESSION['team']=='E')
+					{
+						echo "<h1>工作人員隊</h1>";
+						echo "<img class='mb-4' src='image/team".$_SESSION['team']. ".png' alt='' > ";
+					}
 					
-					
+					if($_SESSION['team']!='E')
 					echo "<img class='mb-4' src='image/team".$_SESSION['team']. ".jpg' alt='' width='150' height='170'> ";
 					
 					$link=pg_connect("$host $port $dataname $user $password");
@@ -119,22 +125,27 @@
 				<div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
 					<div class="d-flex card-body justify-content-center">
 						<div class="tile-header" style="padding: 20px;">
+						
+							<p class='h2' ><a href='coin_detail.php'>  <img class='mb-4' src='image/coin.jpg' alt='' width='100' height='100'></a>
 						<?php
 									//顯示金幣
+									
 									$link=pg_connect("$host $port $dataname $user $password");
 									$sql="SELECT coin_number FROM team_coin WHERE team='".$_SESSION['team']."'";
+									
 									
 									
 									$result=pg_query($link,$sql);
 									if($result)
 									{
 										$row_result=pg_fetch_assoc($result);
-										echo "<p class='h2' ><a href='coin_detail.php'>  <img class='mb-4' src='image/coin.jpg' alt='' width='100' height='100'></a>x" .$row_result['coin_number']."</p>";
+										echo "x" .$row_result['coin_number']."</p>";
 									}
 									else
 										echo "連接錯誤";
 									
 									pg_close($link);
+									
 						?>
 						</div>
 					</div>
