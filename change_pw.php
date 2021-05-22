@@ -47,11 +47,11 @@
                 
                     <div class="tile-header" style="padding: 20px;">
 					
-					<p class="h3">更改名字(發送硬幣時會顯示的名字 名字=\=帳號 可以是中文 )<br>密碼(不可以是學號)</p>
+					<p class="h4">更改名字<br> (名字=\=帳號)<br> (可以是中文)<br>密碼(不可以是學號)</p>
 					<form action="change_pw.php" method="POST"> 
 						<input type="text" name="name"  placeholder="name" required="">
-						<input type="password" name="pw"  placeholder="Password" required="">
-						<input type="submit">
+						<br><input type="password" name="pw"  placeholder="Password" required="">
+						<br><input type="submit">
 					</form>
 					
 					</div>
