@@ -14,7 +14,7 @@
 		<link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
 
 	  
-
+		<script src="anime-master/lib/anime.min.js"></script>
 		<!-- Bootstrap core CSS -->
 		<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -43,7 +43,39 @@
 		<main class="form-signin" >
 			<div style="border-color:#86868b;border-style:solid;border-width:2px 2px;padding-left: 20px;padding-right:20px;padding-top: 30px;background-color: white;border-radius:10px;">
 			<form action="index.php" method="POST"  >
-				<img class="mb-4" src="image/brchanghead.jpg" alt="" width="150" height="170"> 
+				
+				<div style="position: relative;">
+					<div style="position: absolute;left:50px">
+						<svg id="demo-svg" width="150" height="170">
+							<path stroke="" fill="none" d="M 32 148 Q 0 87 7 16 Q 54 1 109 0 Q 140 21 123 55 L 113 155 Z"</path>
+						</svg>	
+					</div>
+						
+					
+					<div id="mario_svg" style="position:absolute;left:40px"  >
+							<img src="image/classic_mario.png" width="50" height="50">
+					</div>
+					
+					<img class="mb-4" src="image/brchanghead.jpg" alt="" width="150" height="170"> 
+				</div>
+				
+				
+				
+				<script>
+					var path = anime.path('#demo-svg path');
+
+					anime({
+					  targets: '#mario_svg',
+					  translateX: path('x'),
+					  translateY: path('y'),
+					  rotate: path('angle'),
+					  easing: 'linear',
+					  duration: 3000,
+					  loop: true
+					});
+				</script>
+					
+				
 				<h1 class="h3 mb-3 fw-normal">Login</h1>
 
 				<input type="text" name="username" id="input" class="form-control" placeholder="Account" required="">

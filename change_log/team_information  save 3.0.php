@@ -9,7 +9,7 @@
 	<link rel="icon" href="favicon.jpg" type="image/x-icon">
   
     
-    
+    <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -19,7 +19,7 @@
 	
 	
 	
-	<link rel="stylesheet" href="static/css/style.css">
+	
 	
     
     <link href="static/css/all.css" rel="stylesheet">
@@ -29,7 +29,7 @@
     
 	
 	<!-- 加入樣式表 -->
-	<link rel="stylesheet" href="static/css/team_style.css">
+	<link rel="stylesheet" href="/static/css/team_style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css"
 		integrity="sha512-uCQmAoax6aJTxC03VlH0uCEtE0iLi83TW1Qh6VezEZ5Y17rTrIE+8irz4H4ehM7Fbfbm8rb30OkxVkuwhXxrRg=="
 		crossorigin="anonymous" />
@@ -62,7 +62,6 @@
 		
 	?>
 	
-	
 		
 	
 		<figure class="text-center">
@@ -82,14 +81,8 @@
 					
 					if($_SESSION['team']=='D')
 					echo "<h1>慢慢龜隊</h1>";
-				
-					if($_SESSION['team']=='E')
-					{
-						echo "<h1>工作人員隊</h1>";
-						echo "<img class='mb-4' src='image/team".$_SESSION['team']. ".png' alt='' width='300' height='150' > ";
-					}
 					
-					if($_SESSION['team']!='E')
+					
 					echo "<img class='mb-4' src='image/team".$_SESSION['team']. ".jpg' alt='' width='150' height='170'> ";
 					
 					$link=pg_connect("$host $port $dataname $user $password");
@@ -104,12 +97,6 @@
 					
 		?>
 	
-		<br>
-		<?php
-		if($_SESSION['authority']=='1')
-		echo "<a href='change_coin.php'>更改硬幣</a>";
-	
-		?>
 	
 		</figure>
 		
@@ -125,27 +112,22 @@
 				<div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
 					<div class="d-flex card-body justify-content-center">
 						<div class="tile-header" style="padding: 20px;">
-						
-							<p class='h2' ><a href='coin_detail.php'>  <img class='mb-4' src='image/coin.jpg' alt='' width='100' height='100'></a>
 						<?php
 									//顯示金幣
-									
 									$link=pg_connect("$host $port $dataname $user $password");
 									$sql="SELECT coin_number FROM team_coin WHERE team='".$_SESSION['team']."'";
-									
 									
 									
 									$result=pg_query($link,$sql);
 									if($result)
 									{
 										$row_result=pg_fetch_assoc($result);
-										echo "x" .$row_result['coin_number']."</p>";
+										echo "<p class='h2' > <img class='mb-4' src='image/coin.jpg' alt='' width='100' height='100'>x" .$row_result['coin_number']."</p>";
 									}
 									else
 										echo "連接錯誤";
 									
 									pg_close($link);
-									
 						?>
 						</div>
 					</div>
@@ -157,7 +139,7 @@
 				<div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
 					<div class="d-flex card-body justify-content-center">
 						<div class="tile-header" style="padding: 20px;">
-							<p class='h3' ><a href='occupied.php'> <img class='mb-4' src='image/n_flag.png' alt='' width='100' height='100'></a>總佔領時間</p>
+							<p class='h3' > <img class='mb-4' src='image/flag.png' alt='' width='100' height='100'>總佔領時間</p>
 						</div>
 					</div>
 					
@@ -187,15 +169,15 @@
         <div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
             
                 
-					<p class='h3' >  <img class='mb-4' src='image/penguin.jpg' alt='' width='100' height='100'>破冰 </p>
+					<p class='h3' > <img class='mb-4' src='image/penguin.jpg' alt='' width='100' height='100'>破冰 </p>
 					<br>
-					<p class='h3' >  <img class='mb-4' src='image/n_flag.png' alt='' width='100' height='100'>占領戰</p>
+					<p class='h3' > <img class='mb-4' src='image/flag.png' alt='' width='100' height='100'>占領戰</p>
 					<br>
-					<p class='h3' >  <img class='mb-4' src='image/boo.jpg' alt='' width='100' height='100'>夜教</p>
+					<p class='h3' > <img class='mb-4' src='image/boo.jpg' alt='' width='100' height='100'>夜教</p>
 					<br>
-					<p class='h3' >  <img class='mb-4' src='image/detective.png' alt='' width='100' height='100'>解謎 </p>
+					<p class='h3' > <img class='mb-4' src='image/detective.png' alt='' width='100' height='100'>解謎 </p>
 					<br>
-					<p class='h3' >  <img class='mb-4' src='image/water.png' alt='' width='100' height='100'>水大地 </p>
+					<p class='h3' > <img class='mb-4' src='image/water.png' alt='' width='100' height='100'>水大地 </p>
 					<br>
 					
 					
@@ -231,9 +213,9 @@
 
 
 
-
+	<!--
 	</div>
-
+	-->
 	
 	
 	

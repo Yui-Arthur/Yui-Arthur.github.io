@@ -17,7 +17,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 	
 	
-	
+	<link rel="stylesheet" href="anime-master\documentation\assets\css\documentation.css">
 	
 	<link rel="stylesheet" href="static/css/style.css">
 	
@@ -37,7 +37,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js"
 		integrity="sha512-VHsNaV1C4XbgKSc2O0rZDmkUOhMKPg/rIi8abX9qTaVDzVJnrDGHFnLnCnuPmZ3cNi1nQJm+fzJtBbZU9yRCww=="
 		crossorigin="anonymous"></script>
-	
+		
+	<script src="anime-master/lib/anime.min.js"></script>
      
 	 <div class="page-content p-4" style="z-index: 100;">
     
@@ -62,7 +63,7 @@
 		
 	?>
 	
-	
+
 		
 	
 		<figure class="text-center">
@@ -104,82 +105,12 @@
 					
 		?>
 	
-		<br>
-		<?php
-		if($_SESSION['authority']=='1')
-		echo "<a href='change_coin.php'>更改硬幣</a>";
-	
-		?>
+		
 	
 		</figure>
 		
-		
-		
-		
-		
-		
-	<!-- 滑動介面 -->
-	<div class="swiper-container">
-		<div class="swiper-wrapper mb-3">
-			<div class="swiper-slide">
-				<div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
-					<div class="d-flex card-body justify-content-center">
-						<div class="tile-header" style="padding: 20px;">
-						
-							<p class='h2' ><a href='coin_detail.php'>  <img class='mb-4' src='image/coin.jpg' alt='' width='100' height='100'></a>
-						<?php
-									//顯示金幣
-									
-									$link=pg_connect("$host $port $dataname $user $password");
-									$sql="SELECT coin_number FROM team_coin WHERE team='".$_SESSION['team']."'";
-									
-									
-									
-									$result=pg_query($link,$sql);
-									if($result)
-									{
-										$row_result=pg_fetch_assoc($result);
-										echo "x" .$row_result['coin_number']."</p>";
-									}
-									else
-										echo "連接錯誤";
-									
-									pg_close($link);
-									
-						?>
-						</div>
-					</div>
-					
-					
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
-					<div class="d-flex card-body justify-content-center">
-						<div class="tile-header" style="padding: 20px;">
-							<p class='h3' ><a href='occupied.php'> <img class='mb-4' src='image/n_flag.png' alt='' width='100' height='100'></a>總佔領時間</p>
-						</div>
-					</div>
-					
-					
-				</div>
-			</div>
-			<div class="swiper-slide">
-				<div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
-					<div class="d-flex card-body justify-content-center">
-						<div class="tile-header" style="padding: 20px;">
-							<p class='h3' > <img class='mb-4' src='image/mario.jpg' alt='' width='100' height='100'>線索</p>
-						</div>
-					</div>
-					
-					
-				</div>
-			</div>
-		</div>
-		<!-- 分頁標籤 -->
-		<br>
-		<div class="swiper-pagination"></div>
-	</div>
+	
+				
 		
 		
 	
@@ -187,25 +118,14 @@
         <div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
             
                 
-					<p class='h3' >  <img class='mb-4' src='image/penguin.jpg' alt='' width='100' height='100'>破冰 </p>
-					<br>
-					<p class='h3' >  <img class='mb-4' src='image/n_flag.png' alt='' width='100' height='100'>占領戰</p>
-					<br>
-					<p class='h3' >  <img class='mb-4' src='image/boo.jpg' alt='' width='100' height='100'>夜教</p>
-					<br>
-					<p class='h3' >  <img class='mb-4' src='image/detective.png' alt='' width='100' height='100'>解謎 </p>
-					<br>
-					<p class='h3' >  <img class='mb-4' src='image/water.png' alt='' width='100' height='100'>水大地 </p>
-					<br>
-					
-					
-					
+			
+
 					
 					
             
 				
                 
-            </div>
+           
         </div>  
     </div>  
 	
@@ -213,28 +133,18 @@
     
 
 	<figure class="text-center">
-	<button class="w-10 btn btn-lg btn-primary" type="submit" style="background-color:#f7f7f8;color: black;">	<a href="logout.php">登出</a></button>
+	<button class="w-10 btn btn-lg btn-primary" type="submit" style="background-color:#f7f7f8;color: black;">	<a href="team_information.php">首頁</a></button>
 	</figure>
 
 	<br>
 
-	<!-- 初始化滑動介面 -->
-	<script>
-		var swiper = new Swiper('.swiper-container', {
-			spaceBetween: 30,
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-		});
-	</script>
-
+	
 
 
 
 	</div>
 
-	
+
 	
 	
 </body></html>

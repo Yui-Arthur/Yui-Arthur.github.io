@@ -29,7 +29,7 @@
     
 	
 	<!-- 加入樣式表 -->
-	<link rel="stylesheet" href="static/css/team_style.css">
+	<link rel="stylesheet" href="/static/css/team_style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css"
 		integrity="sha512-uCQmAoax6aJTxC03VlH0uCEtE0iLi83TW1Qh6VezEZ5Y17rTrIE+8irz4H4ehM7Fbfbm8rb30OkxVkuwhXxrRg=="
 		crossorigin="anonymous" />
@@ -157,7 +157,7 @@
 				<div class="card shadow" style="border-radius: 25px ;background-color:rgba(255,255 ,255 , 0.75);">
 					<div class="d-flex card-body justify-content-center">
 						<div class="tile-header" style="padding: 20px;">
-							<p class='h3' ><a href='occupied.php'> <img class='mb-4' src='image/n_flag.png' alt='' width='100' height='100'></a>總佔領時間</p>
+							<p class='h3' > <img class='mb-4' src='image/n_flag.png' alt='' width='100' height='100'>總佔領時間</p>
 						</div>
 					</div>
 					
